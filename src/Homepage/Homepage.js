@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
 import { Post } from '../Post/Post';
-import { Grid } from '@mui/material';
+import { Grid, Box, styled } from '@mui/material';
 import { PlaceholderContent } from '../util/placeholderApi';
 
 const Watermark = styled('div')({
@@ -11,7 +10,22 @@ const Watermark = styled('div')({
   fontWeight: 'bolder',
   position: 'fixed',
   bottom: 0,
-  left: 0,
+  left: 0
+});
+
+const BlueDotContainer = styled('div')({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  padding:'5px',
+  paddingBottom:'15px'
+});
+
+const BlueDot = styled('div')({
+  width: '2px',
+  height: '2px',
+  borderRadius: '50%',
+  backgroundColor: 'dodgerblue',
+  marginLeft: '1px'
 });
 
 export function Homepage() {
@@ -43,11 +57,27 @@ export function Homepage() {
 
   return (
     <>
-      <Grid container spacing={2} margin="75px">
+      <Grid container margin="75px">
         {photos.map((photo, index) => {
           const comment = comments[index];
           return (
-            <Grid item xs={2} sx={{ border: 1, margin: "20px", padding: "3px", minWidth:"200px" }} key={photo.id}>
+            <Grid
+              sx={{
+                margin: '25px',
+                paddingTop: '3px',
+                minWidth: '150px',
+                boxShadow: 'rgba(0, 0, 0, 0.3) 2px 4px 12px', // Set boxShadow to create a soft shadow border
+                borderRadius: '4px' // Set borderRadius to round the corners
+              }}
+              key={photo.id}
+            >
+              <Box>
+                <BlueDotContainer>
+                <BlueDot />
+                <BlueDot />
+                <BlueDot />
+                </BlueDotContainer>
+              </Box>
               <Post
                 thumbnail={photo.thumbnailUrl}
                 name={comment.name}
