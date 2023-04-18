@@ -16,6 +16,7 @@ const Watermark = styled('div')({
 
 export function Homepage() {
   const [photos, setPhotos] = useState([]);
+  const [comments, setComments] = useState([]);
 
   async function generatePhotos() {
     try {
@@ -27,20 +28,33 @@ export function Homepage() {
   }
 
   useEffect(() => {
-    generatePhotos()
-  }, [])
+    generatePhotos();
+  }, []);
+
+  async function generateComments() {
+    try {
+      const commentApiResult = await PlaceholderContent.getComments();
+      setComments(commentApiResult);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    generateComments();
+  }, []);
 
   return (
     <>
       <Grid container spacing={2}>
-        {photos.map((photo) => {
+        {photos.map((photo, index) => {
+          const comment = comments[index];
           return (
-            <Grid item xs={3} sx={{ border: 1 }}>
+            <Grid item xs={3} sx={{ border: 1 }} key={photo.id}>
               <Post
-                key={photo.id}
-                title={photo.title}
-                url={photo.url}
                 thumbnail={photo.thumbnailUrl}
+                name={comment.name}
+                email={comment.email}
               />
             </Grid>
           );
