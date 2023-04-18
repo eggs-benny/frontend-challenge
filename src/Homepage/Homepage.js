@@ -7,11 +7,11 @@ import { PlaceholderContent } from '../util/placeholderApi';
 const Watermark = styled('div')({
   color: 'grey',
   padding: '5px',
-  fontSize: '12px',
+  fontSize: '10px',
   fontWeight: 'bolder',
   position: 'fixed',
   bottom: 0,
-  left: 0
+  left: 0,
 });
 
 export function Homepage() {
@@ -27,10 +27,6 @@ export function Homepage() {
     }
   }
 
-  useEffect(() => {
-    generatePhotos();
-  }, []);
-
   async function generateComments() {
     try {
       const commentApiResult = await PlaceholderContent.getComments();
@@ -41,16 +37,17 @@ export function Homepage() {
   }
 
   useEffect(() => {
+    generatePhotos();
     generateComments();
   }, []);
 
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} margin="75px">
         {photos.map((photo, index) => {
           const comment = comments[index];
           return (
-            <Grid item xs={3} sx={{ border: 1 }} key={photo.id}>
+            <Grid item xs={2} sx={{ border: 1, margin: "20px", padding: "3px", minWidth:"200px" }} key={photo.id}>
               <Post
                 thumbnail={photo.thumbnailUrl}
                 name={comment.name}
