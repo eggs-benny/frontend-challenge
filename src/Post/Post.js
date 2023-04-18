@@ -1,8 +1,8 @@
-export function Post() {
+export function Post({thumbnail}) {
   return (
     <div className="post">
       <div className="image">
-        <img src="https://via.placeholder.com/150/771796" alt="description" />
+        <img src={thumbnail} alt="description" />
       </div>
       <div className="content">
         <h3>quo vero reiciendis velit similique earum</h3>

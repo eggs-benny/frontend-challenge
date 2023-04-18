@@ -6,12 +6,11 @@ export const PlaceholderContent = {
       if (!jsonRes) {
         return console.error('No photos found');
       }
+      const eightPhotoLimit = jsonRes.slice(0,8)
 
-      return jsonRes.map((image) => {
+      return eightPhotoLimit.map((image) => {
         return {
           id: image.id,
-          title: image.title,
-          url: image.url,
           thumbnailUrl: image.thumbnailUrl
         };
       });
