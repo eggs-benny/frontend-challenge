@@ -10,23 +10,22 @@ It is deployed here: `https://frontend-wyspr.vercel.app/`
 - Open `http://localhost:3000` in your web browser to view the app (it should launch automatically)
 
 ## Dependencies
-This project was created using Create React App and includes the following dependencies:
-
-react
-react-dom
-react-scripts
+This project includes the following dependencies:
+- react
+- react-scripts
+- MUI
+- jest
+- jest-fetch-mock
 
 ## Notes & Comments
-- As 'photos' and 'comments' APIs are unrelated, I've pulled comments in by photo index. Other approaches are possible (inc randomisation), but this felt like the easiest to switch out if the APIs became related.
-- The App page is there in case the site should grow to multiple pages, allowing for routing.
-- Thumbnail photo size means photos are narrow on render compared to the example.
-- Limited number of posts to 8 in line with the example, but this logic can be amended if more are required.
+- I have tested the API and the key components. Although this was my first time testing React components, I believe I have good coverage, but may not have picked up all the nuances. However, there were a couple of errors thrown due to my error testing. I have not found a way to avoid these errors without removing the tests.
+- To make the code more organized, I refactored the styling elements into separate files.
+- As the 'photos' and 'comments' APIs do not have a relationship, I mapped the comments to photos by their indices. While other approaches, including randomization, are possible, I chose this approach as it felt like the easiest one to switch out if (in the future) we wanted to pull all the info from one API, or related ones.
+-  The App component is included in case the site were to grow to multiple pages, allowing for routing. Currently, it is not playing much of a role.
+- The thumbnail photo size of 150x150 means that photos are narrower on render compared to the example.
+-  In line with the example, I have limited the number of posts to 8. However, this logic can be easily amended if more are required.
 
 ## Test coverage
-
-Overall, good test coverage, some issues with error testing to be ironed out and discussed:
-
----------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
 All files            |   86.95 |    66.66 |     100 |   86.95 |                   
@@ -42,7 +41,6 @@ All files            |   86.95 |    66.66 |     100 |   86.95 |
   Post.styles.js     |     100 |      100 |     100 |     100 |                   
  util                |    82.6 |       50 |     100 |    82.6 |                   
   placeholderApi.js  |    82.6 |       50 |     100 |    82.6 | 7-8,28-29         
----------------------|---------|----------|---------|---------|-------------------
 
 ## Contributing
 Contributions to this project are welcome. If you find any bugs or issues, please open an issue or submit a pull request.
