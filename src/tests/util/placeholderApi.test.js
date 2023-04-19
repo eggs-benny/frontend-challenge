@@ -1,4 +1,4 @@
-import { PlaceholderContent } from './placeholderApi';
+import { PlaceholderContent } from '../../util/placeholderApi';
 
 describe('getPhotos()', () => {
   it('should fetch photos from the API and return an array of photo objects', async () => {

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Post } from './Post';
+import { Post } from '../../components/Post';
 
 describe('Post', () => {
 it('renders Post component with props', () => {

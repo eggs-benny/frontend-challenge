@@ -1,4 +1,4 @@
-import { PlaceholderContent } from './placeholderApi';
+import { PlaceholderContent } from '../../util/placeholderApi';
 import fetchMock from 'jest-fetch-mock';
 import mockPhotos from './mockPhotos.json';
 import mockComments from './mockComments.json';

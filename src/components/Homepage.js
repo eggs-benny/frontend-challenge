@@ -1,32 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Post } from '../Post/Post';
-import { Grid, Box, styled } from '@mui/material';
+import { Post } from './Post';
+import { Grid } from '@mui/material';
 import { PlaceholderContent } from '../util/placeholderApi';
-
-const Watermark = styled('div')({
-  color: 'grey',
-  padding: '5px',
-  fontSize: '10px',
-  fontWeight: 'bolder',
-  position: 'fixed',
-  bottom: 0,
-  left: 0
-});
-
-const BlueDotContainer = styled('div')({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  padding: '5px',
-  paddingBottom: '15px'
-});
-
-const BlueDot = styled('div')({
-  width: '2px',
-  height: '2px',
-  borderRadius: '50%',
-  backgroundColor: 'dodgerblue',
-  marginLeft: '1px'
-});
+import { Watermark } from './Watermark'
+import { styles } from '../styles/Homepage.styles'
 
 export function Homepage() {
   const [photos, setPhotos] = useState([]);
@@ -63,22 +40,9 @@ export function Homepage() {
             const comment = comments[index];
             return (
               <Grid
-                sx={{
-                  margin: '25px',
-                  paddingTop: '3px',
-                  minWidth: '150px',
-                  boxShadow: 'rgba(0, 0, 0, 0.3) 2px 4px 12px',
-                  borderRadius: '4px'
-                }}
+                sx={styles.postContainer}
                 key={photo.id}
               >
-                <Box>
-                  <BlueDotContainer>
-                    <BlueDot />
-                    <BlueDot />
-                    <BlueDot />
-                  </BlueDotContainer>
-                </Box>
                 <Post
                   thumbnail={photo.thumbnailUrl}
                   name={comment.name}
