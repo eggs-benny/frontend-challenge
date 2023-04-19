@@ -1,4 +1,3 @@
-import './App.css';
 import { Homepage } from '../Homepage/Homepage'
 
 export function App() {

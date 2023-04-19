@@ -4,7 +4,8 @@ export const PlaceholderContent = {
       const res = await fetch('https://jsonplaceholder.typicode.com/photos');
       const jsonRes = await res.json();
       if (!jsonRes) {
-        return console.error('No photos found');
+        console.error('No photos found');
+        return []
       }
       const eightPhotoLimit = jsonRes.slice(0,8)
 
@@ -16,6 +17,7 @@ export const PlaceholderContent = {
       });
     } catch (error) {
       console.error(error);
+      throw new Error('Failed to fetch photos');
     }
   },
   async getComments() {
@@ -23,7 +25,8 @@ export const PlaceholderContent = {
       const res = await fetch('https://jsonplaceholder.typicode.com/comments')
       const jsonRes = await res.json();
       if (!jsonRes) {
-        return console.error('No comments found')
+        console.error('No comments found')
+        return [];
       }
 
       const eightCommentLimit = jsonRes.slice(0,8)
@@ -32,14 +35,14 @@ export const PlaceholderContent = {
         return {
           id:comment.id,
           name:comment.name,
-          email:comment.email,
-          body:comment.body
+          email:comment.email
         };
       })
       
       }
       catch(error) {
-        console.error(error);
+        console.error('Failed to fetch comments', error);
+        throw new Error('Failed to fetch comments');
       }
     }
 };

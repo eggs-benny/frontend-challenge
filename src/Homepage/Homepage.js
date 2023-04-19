@@ -66,8 +66,8 @@ export function Homepage() {
                 margin: '25px',
                 paddingTop: '3px',
                 minWidth: '150px',
-                boxShadow: 'rgba(0, 0, 0, 0.3) 2px 4px 12px', // Set boxShadow to create a soft shadow border
-                borderRadius: '4px' // Set borderRadius to round the corners
+                boxShadow: 'rgba(0, 0, 0, 0.3) 2px 4px 12px',
+                borderRadius: '4px'
               }}
               key={photo.id}
             >
