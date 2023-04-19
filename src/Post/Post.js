@@ -2,10 +2,8 @@ import { Box, Chip, Typography } from '@mui/material';
 
 export function Post({ thumbnail, name, email }) {
   return (
-    <Box sx={{ textAlign: 'left' }}>
-      <div className="image">
-        <img src={thumbnail} alt="description" />
-      </div>
+    <Box data-testid="post" sx={{ textAlign: 'left' }}>
+      <img src={thumbnail} alt="description" />
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Box sx={{ flexGrow: 1 }}>
           <Chip
@@ -59,6 +57,7 @@ export function Post({ thumbnail, name, email }) {
           {name}
         </Typography>
         <Typography
+          test-id="email"
           variant="subtitle2"
           fontSize="10px"
           sx={{

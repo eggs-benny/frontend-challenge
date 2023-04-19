@@ -1,15 +1,17 @@
 import { PlaceholderContent } from './placeholderApi';
 import fetchMock from 'jest-fetch-mock';
-import mockResponse from './mockReponse.json';
+import mockPhotos from './mockPhotos.json';
+import mockComments from './mockComments.json';
+
 fetchMock.enableMocks();
 
 beforeEach(() => {
   fetchMock.resetMocks();
 });
 
-describe('PlaceholderContent', () => {
+describe('getPhotos()', () => {
   it('should return a list of 8 photos', async () => {
-    fetchMock.mockResponseOnce(JSON.stringify(mockResponse));
+    fetchMock.mockResponseOnce(JSON.stringify(mockPhotos));
 
     const photos = await PlaceholderContent.getPhotos();
     expect(Array.isArray(photos)).toBe(true);
@@ -19,11 +21,23 @@ describe('PlaceholderContent', () => {
     expect(fetchMock).toHaveBeenCalledWith(
       'https://jsonplaceholder.typicode.com/photos'
     );
+  })
+
+    it('should throw an error if the API returns an error returning photos', async () => {
+      fetchMock.mockReject(new Error('API error'));
+
+      await expect(PlaceholderContent.getPhotos()).rejects.toThrow(
+        'Failed to fetch photos'
+      );
+      expect(fetchMock).toHaveBeenCalledWith(
+        'https://jsonplaceholder.typicode.com/photos'
+      );
+    });
   });
 
-  describe('PlaceholderContent', () => {
+  describe('getComments()', () => {
     it('should return a list of 8 comments', async () => {
-      fetchMock.mockResponseOnce(JSON.stringify(mockResponse));
+      fetchMock.mockResponseOnce(JSON.stringify(mockComments));
       const comments = await PlaceholderContent.getComments();
 
       expect(Array.isArray(comments)).toBe(true);
@@ -35,7 +49,8 @@ describe('PlaceholderContent', () => {
         'https://jsonplaceholder.typicode.com/comments'
       );
     });
-    it('should throw an error if the API returns an error', async () => {
+    
+    it('should throw an error if the API returns an error returning comments', async () => {
       fetchMock.mockReject(new Error('API error'));
 
       await expect(PlaceholderContent.getComments()).rejects.toThrow(
@@ -46,4 +61,3 @@ describe('PlaceholderContent', () => {
       );
     });
   });
-});

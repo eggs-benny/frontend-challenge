@@ -16,8 +16,8 @@ const Watermark = styled('div')({
 const BlueDotContainer = styled('div')({
   display: 'flex',
   justifyContent: 'flex-end',
-  padding:'5px',
-  paddingBottom:'15px'
+  padding: '5px',
+  paddingBottom: '15px'
 });
 
 const BlueDot = styled('div')({
@@ -58,34 +58,38 @@ export function Homepage() {
   return (
     <>
       <Grid container margin="75px">
-        {photos.map((photo, index) => {
-          const comment = comments[index];
-          return (
-            <Grid
-              sx={{
-                margin: '25px',
-                paddingTop: '3px',
-                minWidth: '150px',
-                boxShadow: 'rgba(0, 0, 0, 0.3) 2px 4px 12px',
-                borderRadius: '4px'
-              }}
-              key={photo.id}
-            >
-              <Box>
-                <BlueDotContainer>
-                <BlueDot />
-                <BlueDot />
-                <BlueDot />
-                </BlueDotContainer>
-              </Box>
-              <Post
-                thumbnail={photo.thumbnailUrl}
-                name={comment.name}
-                email={comment.email}
-              />
-            </Grid>
-          );
-        })}
+        {photos.length > 0 ? (
+          photos.map((photo, index) => {
+            const comment = comments[index];
+            return (
+              <Grid
+                sx={{
+                  margin: '25px',
+                  paddingTop: '3px',
+                  minWidth: '150px',
+                  boxShadow: 'rgba(0, 0, 0, 0.3) 2px 4px 12px',
+                  borderRadius: '4px'
+                }}
+                key={photo.id}
+              >
+                <Box>
+                  <BlueDotContainer>
+                    <BlueDot />
+                    <BlueDot />
+                    <BlueDot />
+                  </BlueDotContainer>
+                </Box>
+                <Post
+                  thumbnail={photo.thumbnailUrl}
+                  name={comment.name}
+                  email={comment.email}
+                />
+              </Grid>
+            );
+          })
+        ) : (
+          <div>No posts found</div>
+        )}
       </Grid>
       <Watermark>
         <p>© WYSPR 2022</p>

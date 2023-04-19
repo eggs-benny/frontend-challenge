@@ -1,7 +1,7 @@
 import { PlaceholderContent } from './placeholderApi';
 
 describe('getPhotos()', () => {
-  xit('should fetch photos from the API and return an array of photo objects', async () => {
+  it('should fetch photos from the API and return an array of photo objects', async () => {
     const photos = await PlaceholderContent.getPhotos();
   
     expect(Array.isArray(photos)).toBe(true);
@@ -9,12 +9,10 @@ describe('getPhotos()', () => {
     expect(photos[0]).toHaveProperty('id');
     expect(photos[0]).toHaveProperty('thumbnailUrl');
   });
-
-
 });
 
 describe('getComments()', () => {
-  xit('should fetch comments from the API and return an array of comment objects', async () => {
+  it('should fetch comments from the API and return an array of comment objects', async () => {
     const comments = await PlaceholderContent.getComments();
   
     expect(Array.isArray(comments)).toBe(true);

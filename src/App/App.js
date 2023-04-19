@@ -2,7 +2,7 @@ import { Homepage } from '../Homepage/Homepage'
 
 export function App() {
   return (
-    <div className="App">
+    <div data-testid="homepage">
       <Homepage/>
     </div>
   );

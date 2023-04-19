@@ -16,7 +16,7 @@ export const PlaceholderContent = {
         };
       });
     } catch (error) {
-      console.error(error);
+      console.error('Failed to fetch photos',  error);
       throw new Error('Failed to fetch photos');
     }
   },
@@ -35,7 +35,7 @@ export const PlaceholderContent = {
         return {
           id:comment.id,
           name:comment.name,
-          email:comment.email
+          email:comment.email.toLowerCase()
         };
       })
       
